@@ -1,0 +1,174 @@
+Referências:
+
+Alert-Icon.png: Icon made by Freepik (www.freepik.com) from www.flaticon.com
+    Web link:
+        <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
+        title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"
+        title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+Dragabilidade dos nodos: http://jfxtras.org/
+Criador de gradientes em css: https://www.colorzilla.com/gradient-editor/
+Definição de códigos de cores em html: https://htmlcolorcodes.com/
+
+Descriçao de utilização do JFuzzyLogic: http://jfuzzylogic.sourceforge.net/html/manual.html
+
+Dialogs para javaFx (original): https://code.makery.ch/blog/javafx-dialogs-official/
+
+CSS Styles for javafx dialogs:
+https://stackoverflow.com/questions/28417140/styling-default-javafx-dialogs
+https://stackoverflow.com/questions/26808261/action-buttons-css-style-in-javafx-controlfx-dialog
+
+JavaFX tabPane css border edit:
+https://stackoverflow.com/questions/34211310/remove-the-glowing-border-from-focused-tab-with-css
+
+Arredondamento e precisão de valores numéricos:
+https://stackoverflow.com/questions/179427/how-to-resolve-a-java-rounding-double-issue
+https://blogs.oracle.com/corejavatechtips/the-need-for-bigdecimal
+
+Conversão de arrayList de Float para array[] de float:
+https://stackoverflow.com/questions/4837568/java-convert-arraylistfloat-to-float
+http://commons.apache.org/proper/commons-lang/javadocs/api-3.1/org/apache/commons/lang3/ArrayUtils.html#toPrimitive%28java.lang.Float[]%29
+
+COMBOBOX DETAILS :
+http://www.java2s.com/Code/Java/JavaFX/AddchangelistenertoComboBoxvalueProperty.htm
+
+Salvar arquivo em diretório "padrão": https://stackoverflow.com/questions/35923504/set-initial-directory-of-javafx-filechooser
+
+/////////////////////////////////////////// MONTAGEM DA CONSULTA VIA UI //////////////////////////////////
+
+Escolher 1 opção:
+
+A > Consultar resultados com teorema de Bayes Puro
+    1 - Escolher as Evidências da Hipotese
+        multiplas opções podem ser escolhidas
+    2 - Escolher 1 Estado de cada Evidência
+        ex: 
+            Barulho         > Label
+                O - Alto    > RadioButton
+                
+    3 - Click "consultar resultados"
+    4 - Resultados aparecem
+
+(só habilita essa opção após clickar em "compilar inputs fuzzy"
+B > Consultar resultados Fuzzy-Bayesianos
+    1 - Escolher as Evidências
+        multiplas opções podem ser escolhidas
+    2 - Digitar 1 medição para cada Evidência Escolhida
+    3 - Click "consultar resultados"
+    4 - Resultados aparecem
+      4b - Opção de ocultar/mostrar gráficos
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Consistência entre os nodos da rede (modo de criação e preenchimento manual de nodos):
+
+0 - Nodo de hipótese OK:
+    0.1: Botão de "lock" do nodo de hipótese é clickado - OK
+    0.1.1: Botão de criação de evidências é habilitado  - OK
+        1: Botão de criação de evidências é clickado    - OK
+        1.1: botão de "lock" do nodo de hipótese é desabilitado    - OK
+            1.1a: evidências alinhadas com a hipótese são criadas até que seja suficiente            - OK
+                1.1.1a: as evidências são preenchidas corretamente                                   - OK  
+                    1.1.1a.1: É apertado o botão "compilar rede"                                     - OK
+                       > Unlock tab_results                         - OK
+                       > Unlock tab_fuzzy                           - OK
+                       > Unlock button "Editar rede Bayesiana"      - OK
+                       > Lock edition of tab_bayes                  - OK
+                       > Lock button "compilar rede"                - OK
+                       > Os inputs da rede são convertidos em objetos "calculáveis"                 - OK
+                            - Nodo de Hipótese gera um objeto "Hypothesis"              - OK
+                              > Nodo de Hipótese gera n-objetos "HypothesisState"       - OK
+                            - Nodo de Hipótese gera um objeto "Hypothesis"              - OK
+                              > Nodo de Hipótese gera n-objetos "HypothesisState"       - OK
+
+                Secundário ~
+                1.1.1b: Todas evidências são excluídas (adicionar botão para apagar todas as evidências)                ~
+                    1.1.1b.1: botão de criação de evidências é desabilitado                                             ~
+                    1.1.1b.1.1: botão de "lock" do nodo de hipótese é reabilitado, permitindo alterações no nodo        ~
+                    << 0 <<
+
+
+// ARQUIVO FCL COM ANOTAÇÕES PARA CRIAR VARFUZZY
+
+FUNCTION_BLOCK variaveis_fuzzy_da_hipotese_x    // \n + $FUNCTION_BLOCK + hyp.getnome +
+                                                // \n +
+FUZZIFY barulho                                 // \n + $FUZZIFY + evid(i).name +
+	TERM baixo := trian 0 10 70;            // \n + $TERM + evid(i).state(j).name + $:= + #functionType + @v1 + @v2 + @v3 + $;    // #functionType = trian, n(v) = 3
+	TERM alto := (10,0) (70,1)(100,1);      // \n + $TERM + evid(i).state(j+1).name + $:= + #functionType + (@x1,y1) + (@x2,y2) + (@x3,y3) + $;    // #functionType = null (default), n(p) >=2 
+END_FUZZIFY                                     // \n + $END_FUZZIFY +
+                                                // \n +
+FUZZIFY iluminacao                              // \n + $FUZZIFY + evid(i+1).name +
+	TERM claro := trape 0 15 27 85;         // \n + $TERM + evid(i+1).state(j).name + $:= + #functionType + @v1 + @v2 + @v3 + @v4 + $;    // #functionType = trape, n(v) = 4
+	TERM escuro := (5,0) (90,1)(100,1);     // \n + $TERM + evid(i+1).state(j+1).name + $:= + #functionType + (@x1,y1) + (@x2,y2) + (@x3,y3) + $;    // #functionType = null (default), n(p) >=2 
+END_FUZZIFY                                     // \n + $END_FUZZIFY +
+                                                // \n +
+FUZZIFY espaco                                  // \n + $FUZZIFY + evid(i+n).name +
+	TERM apertado := (0, 1)  (80, 0) ;      // \n + $TERM + evid(i+n).state(j).name + $:= + #functionType + (@x1,y1) + (@x2,y2) + (@x3,y3) + $;    // #functionType = null (default), n(p) >=2 
+	TERM amplo := gauss 56 92;              // \n + $TERM + evid(i+n).state(j+1).name + $:= + @v1 + @v2 + $;    // #functionType = gauss, n(p) = 2
+END_FUZZIFY                                     // \n + $END_FUZZIFY +
+                                                // \n +
+END_FUNCTION_BLOCK                              // \n + $END_FUNCTION_BLOCK
+
+
+
+MainScreen.area_fuzzy.add(newFuzzyNode(Evid)); 
+
+
+// ARQUIVO FCL COM ANOTAÇÕES PARA CRIAR VARFUZZY
+
+FUNCTION_BLOCK variaveis_fuzzy_da_hipotese_x    // \n + $FUNCTION_BLOCK + hyp.getnome +
+                                                // \n +
+VAR_INPUT                                       // \n + $VAR_INPUT +
+	barulho: REAL;                          // \n + evid(i).name + $: + $REAL + $; +
+	iluminacao: REAL;                       // \n + evid(i+1).name + $: + $REAL + $; +
+	espaco: REAL;                           // \n + evid(i+n).name + $: + $REAL + $; +
+END_VAR                                         // \n + $END_VAR +
+                                                // \n +
+FUZZIFY barulho                                 // \n + $FUZZIFY + evid(i).name +
+	TERM baixo := trian 0 10 70;            // \n + $TERM + evid(i).state(j).name + $:= + #functionType + @v1 + @v2 + @v3 + $;    // #functionType = trian, n(v) = 3
+	TERM alto := (10,0) (70,1)(100,1);      // \n + $TERM + evid(i).state(j+1).name + $:= + #functionType + (@x1,y1) + (@x2,y2) + (@x3,y3) + $;    // #functionType = null (default), n(p) = 3
+END_FUZZIFY                                     // \n + $END_FUZZIFY +
+                                                // \n +
+FUZZIFY iluminacao                              // \n + $FUZZIFY + evid(i+1).name +
+	TERM claro := trape 0 15 27 85;         // \n + $TERM + evid(i+1).state(j).name + $:= + #functionType + @v1 + @v2 + @v3 + @v4 + $;    // #functionType = trape, n(v) = 4
+	TERM escuro := (5,0) (90,1)(100,1);     // \n + $TERM + evid(i+1).state(j+1).name + $:= + #functionType + (@x1,y1) + (@x2,y2) + (@x3,y3) + $;    // #functionType = null (default), n(p) = 3
+END_FUZZIFY                                     // \n + $END_FUZZIFY +
+                                                // \n +
+FUZZIFY espaco                                  // \n + $FUZZIFY + evid(i+n).name +
+	TERM apertado := (0, 1)  (80, 0) ;      // \n + $TERM + evid(i+n).state(j).name + $:= + #functionType + (@x1,y1) + (@x2,y2) + (@x3,y3) + $;    // #functionType = null (default), n(p) = 3
+	TERM amplo := gauss 56 92;              // \n + $TERM + evid(i+n).state(j+1).name + $:= + #functionType + @v1 + @v1 + $;    // #functionType = gauss (default), n(p) = 3
+END_FUZZIFY                                     // \n + $END_FUZZIFY +
+                                                // \n +
+END_FUNCTION_BLOCK                              // \n + $END_FUNCTION_BLOCK
+
+
+
+
+FUNCTION_BLOCK classificar_estrada	
+
+VAR_INPUT				
+	barulho: REAL;	
+	iluminacao: REAL;
+	espaco: REAL;		
+END_VAR
+
+FUZZIFY barulho			
+	TERM baixo := trian 0 10 70;
+	TERM alto := (10,0) (20,0.2) (30,0.2) (30,1) (35,0.8) (45,0.8) (65,0.5) (70,1) (100,1);
+END_FUZZIFY
+
+FUZZIFY iluminacao			
+	TERM claro := trape 0 15 27 85;
+	TERM escuro := (5,0) (90,1)(100,1);
+END_FUZZIFY
+
+FUZZIFY espaco			
+	TERM apertado := (0, 1)  (80, 0) ;
+	TERM amplo := gauss 56 92;
+END_FUZZIFY
+
+END_FUNCTION_BLOCK
+
+
+

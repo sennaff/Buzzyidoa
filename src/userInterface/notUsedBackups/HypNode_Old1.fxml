@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="hypNode_rootPane" minHeight="-Infinity" minWidth="-Infinity" styleClass="bg-hyp" stylesheets="@styles.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="hypNode_contentVBox">
+         <children>
+            <HBox fx:id="hypNode_titleHBox" prefHeight="26.0" prefWidth="226.0" styleClass="toolbar" stylesheets="@styles.css">
+               <children>
+                  <Label fx:id="hypNode_lableNodeType" alignment="CENTER" prefHeight="26.0" prefWidth="129.0" styleClass="hyp-title-fonts" stylesheets="@styles.css" text="Hipótese:" textAlignment="CENTER" />
+                  <Label fx:id="hypNode_labelNodeName" alignment="CENTER" prefHeight="26.0" prefWidth="114.0" styleClass="hyp-title-fonts" stylesheets="@styles.css" text="Label" />
+                  <Label fx:id="hypNode_closeBtn" alignment="CENTER" graphicTextGap="0.0" onMouseClicked="#removeHypNode" onMouseEntered="#closeButtonHighlightOn" onMouseExited="#closeButtonHighlightOff" prefHeight="26.0" prefWidth="69.0" styleClass="hyp-title-fonts" text="X" textAlignment="CENTER" />         
+               </children>
+            </HBox>
+            <GridPane fx:id="hypNode_statesGrid" alignment="CENTER" prefHeight="84.0" prefWidth="228.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.9998947143555" minWidth="10.0" prefWidth="138.9998947143555" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.00000000000001" minWidth="10.0" prefWidth="59.20002441406251" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="69.39990234375" minWidth="10.0" prefWidth="28.79997558593749" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="133.60000953674316" prefHeight="38.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="149.60003204345705" prefHeight="37.39998779296875" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="139.3999885559082" prefHeight="36.60001220703124" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="hypNode_stateNameTxtField" alignment="CENTER" promptText="Estado1" styleClass="textArea-node" stylesheets="@styles.css" />
+                  <TextField fx:id="hypNode_stateProbTxtField" alignment="CENTER" promptText="P(H1)" styleClass="textArea-node" stylesheets="@styles.css" GridPane.columnIndex="1" />
+                  <Button fx:id="hypNode_killStateBtn" alignment="CENTER" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="20.0" prefWidth="16.0" scaleShape="false" styleClass="btn-kill-hyp-state" stylesheets="@styles.css" text="-" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Button>
+                  <TextField alignment="CENTER" promptText="Estado2" styleClass="textArea-node" stylesheets="@styles.css" GridPane.rowIndex="1" />
+                  <TextField alignment="CENTER" promptText="P(H2)" styleClass="textArea-node" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="hypNode_killStateBtn1" alignment="CENTER" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="20.0" prefWidth="16.0" scaleShape="false" styleClass="btn-kill-hyp-state" stylesheets="@styles.css" text="-" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Button>
+                  <TextField alignment="CENTER" promptText="Estado3" styleClass="textArea-node" stylesheets="@styles.css" GridPane.rowIndex="2" />
+                  <TextField alignment="CENTER" promptText="P(H3)" styleClass="textArea-node" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="hypNode_killStateBtn2" alignment="CENTER" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" pickOnBounds="false" prefHeight="20.0" prefWidth="16.0" scaleShape="false" styleClass="btn-kill-hyp-state" stylesheets="@styles.css" text="-" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
+            <BorderPane fx:id="hypNode_addStateBtnBorder" prefHeight="34.0" prefWidth="226.0">
+               <center>
+                  <Button fx:id="hypNode_addStateBtn" alignment="CENTER" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#addHypState" pickOnBounds="false" scaleShape="false" styleClass="btn-add-hyp-state" stylesheets="@styles.css" text="+" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Button>
+               </center>
+            </BorderPane>
+         </children>
+      </VBox>
+   </children>
+</fx:root>

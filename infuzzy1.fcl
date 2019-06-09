@@ -1,0 +1,25 @@
+
+FUNCTION_BLOCK classificar_estrada
+
+VAR_INPUT				
+	barulho : REAL;
+	iluminacao : REAL;
+        espaco : REAL;
+END_VAR
+
+FUZZIFY barulho			
+	TERM baixo := trian 1 20 50;
+	TERM alto := sigm 1 30 ;
+END_FUZZIFY
+
+FUZZIFY iluminacao			
+	TERM claro := trape 0 15 27 85 ;
+	TERM escuro := gbell 5 20 50 ;
+END_FUZZIFY
+
+FUZZIFY espaco			
+	TERM apertado := sigm 20 40 ;
+	TERM amplo := gauss 56 92;
+END_FUZZIFY
+
+END_FUNCTION_BLOCK

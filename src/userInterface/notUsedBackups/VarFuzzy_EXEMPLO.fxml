@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="fuzzyNode_rootPane" prefHeight="62.0" prefWidth="230.0" styleClass="bg-hyp" stylesheets="@styles.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="fuzzyNode_contentVBox" stylesheets="@styles.css">
+         <children>
+            <HBox fx:id="fuzzyNode_titleHBox" alignment="CENTER" styleClass="toolbar" stylesheets="@styles.css" VBox.vgrow="SOMETIMES">
+               <children>
+                  <Label fx:id="fuzzyNode_lblNodeName" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" styleClass="hyp-title-fonts" stylesheets="@styles.css" text="NomeDaEvidência" textAlignment="CENTER">
+                     <padding>
+                        <Insets bottom="4.0" left="6.0" top="4.0" />
+                     </padding>
+                  </Label>         
+               </children>
+            </HBox>
+            <HBox fx:id="fuzzyNode_HboxGrids">
+               <children>
+                  <GridPane fx:id="fuzzyNode_stateFuncGrid" alignment="CENTER">
+                     <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="fuzzyNode_fuzzyStateNameLbl" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" stylesheets="@styles.css" text="UmEstadoDaEvidencia" textAlignment="CENTER">
+                           <padding>
+                              <Insets bottom="4.0" left="6.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <ComboBox fx:id="fuzzyNode_funcsComboBox" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane fx:id="fuzzyNode_pointsGrid" prefHeight="30.0" prefWidth="377.0">
+                    <columnConstraints>
+                      <ColumnConstraints />
+                      <ColumnConstraints hgrow="SOMETIMES" />
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextField alignment="CENTER" promptText="(x,y)" GridPane.rowIndex="1" />
+                        <TextField alignment="CENTER" promptText="(x,y)" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" text="add ponto" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </HBox>
+            <HBox fx:id="fuzzyNode_okHbox" alignment="CENTER">
+               <children>
+                  <Button fx:id="btn_lockFuzzyNode" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" styleClass="btn-lock-hyp-state" stylesheets="@styles.css" text="OK" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip_lockFuzzyNode" text="Travar nodo Fuzzy (todos os campos devem estar preenchidos)&#10;">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</fx:root>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="fuzzyNode_rootPane" prefHeight="62.0" prefWidth="230.0" styleClass="bg-hyp" stylesheets="@styles.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="fuzzyNode_contentVBox" prefHeight="51.0" prefWidth="255.0" stylesheets="@styles.css">
+         <children>
+            <HBox fx:id="fuzzyNode_titleHBox" alignment="CENTER" styleClass="toolbar" stylesheets="@styles.css" VBox.vgrow="SOMETIMES">
+               <children>
+                  <Label fx:id="fuzzyNode_lblNodeName" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" styleClass="hyp-title-fonts" stylesheets="@styles.css" text="NomeDaEvidência" textAlignment="CENTER">
+                     <padding>
+                        <Insets bottom="4.0" left="6.0" top="4.0" />
+                     </padding>
+                  </Label>         
+               </children>
+            </HBox>
+            <HBox fx:id="fuzzyNode_HboxGrids">
+               <children>
+                  <GridPane fx:id="stateAndFunctionGrid" alignment="CENTER">
+                  </GridPane>
+                  <GridPane fx:id="fuzzyPointsGrid">
+                  </GridPane>
+               </children>
+            </HBox>
+            <HBox fx:id="fuzzyNode_okHbox" alignment="CENTER">
+               <children>
+                  <Button fx:id="btn_lockFuzzyNode" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" styleClass="btn-lock-hyp-state" stylesheets="@styles.css" text="OK" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip_lockFuzzyNode" text="Travar nodo Fuzzy (todos os campos devem estar preenchidos)&#10;">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</fx:root>

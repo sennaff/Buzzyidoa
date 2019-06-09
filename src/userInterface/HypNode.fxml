@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="hypNode_rootPane" prefHeight="58.0" prefWidth="251.0" styleClass="bg-hyp" stylesheets="@styles.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="hypNode_contentVBox" prefHeight="57.0" prefWidth="251.0" stylesheets="@styles.css">
+         <children>
+            <HBox fx:id="hypNode_titleHBox" alignment="CENTER_LEFT" styleClass="toolbar" stylesheets="@styles.css" VBox.vgrow="NEVER">
+               <children>
+                  <Label fx:id="hypNode_lblNodeType" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" styleClass="hyp-title-fonts" stylesheets="@styles.css" text="Hipótese:" textAlignment="CENTER">
+                     <padding>
+                        <Insets bottom="4.0" left="6.0" top="4.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="hypNode_nodeNameTxtField" alignment="CENTER" prefHeight="26.0" prefWidth="126.0" promptText="NomeDaHipotese" styleClass="textField-HypName" stylesheets="@styles.css" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="hypNode_closeBtn" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" onMouseClicked="#removeHypNode" onMouseEntered="#closeButtonHighlightOn" onMouseExited="#closeButtonHighlightOff" prefHeight="15.0" prefWidth="27.0" styleClass="hyp-title-fonts" stylesheets="@styles.css" text="X" textAlignment="CENTER">
+                     <padding>
+                        <Insets bottom="3.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip_hypCloseBtn" text="Excluir nodo de Hipótese&#10;(Também irá excluir todas as evidências presentes)">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </Label>
+               </children>
+            </HBox>
+            <GridPane fx:id="hypNode_statesGrid" alignment="CENTER" prefHeight="0.0" prefWidth="228.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.9998947143555" minWidth="10.0" prefWidth="138.9998947143555" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.00000000000001" minWidth="10.0" prefWidth="59.20002441406251" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="69.39990234375" minWidth="10.0" prefWidth="28.79997558593749" />
+               </columnConstraints>
+               <VBox.margin>
+                  <Insets right="5.0" />
+               </VBox.margin>
+            </GridPane>
+            <BorderPane fx:id="hypNode_addStateBtnBorder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="251.0">
+               <left>
+                  <Button fx:id="btn_lockHypNode" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#lockHypNode" prefHeight="26.0" prefWidth="42.0" styleClass="btn-lock-hyp-state" stylesheets="@styles.css" text="OK" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip_lockHypNode" text="Travar nodo de Hipótese (todos os campos devem estar preenchidos)">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                     <BorderPane.margin>
+                        <Insets bottom="2.0" left="5.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </left>
+               <center>
+                  <Button fx:id="hypNode_addStateBtn" accessibleText="Adicionar estado à hipotese" alignment="CENTER" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#addHypState" pickOnBounds="false" scaleShape="false" styleClass="btn-add-hyp-state" stylesheets="@styles.css" text="+" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip fx:id="tooltip_hypAddStateBtn" text="Adicionar estado à Hipótese" textAlignment="CENTER" />
+                     </tooltip>
+                  </Button>
+               </center>
+               <right>
+                  <AnchorPane prefHeight="35.0" prefWidth="34.0" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+         </children>
+      </VBox>
+   </children>
+</fx:root>

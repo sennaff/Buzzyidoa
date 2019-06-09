@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root fx:id="root_bayes_result" prefHeight="362.0" prefWidth="820.0" styleClass="bg-area" stylesheets="@styles.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="hbox_main_bayes_result" prefHeight="362.0" prefWidth="820.0">
+         <children>
+            <Accordion fx:id="accordion_bayes_result" prefHeight="223.0" prefWidth="206.0">
+              <panes>
+                <TitledPane fx:id="evids_chooser_display" animated="false" text="Evidências da Hipótese:">
+                  <content>
+                    <AnchorPane fx:id="evids_chooser_areaPane">
+                           <children>
+                              <VBox fx:id="evids_chooser_area" />
+                              <CheckBox layoutY="14.0" mnemonicParsing="false" text="CheckBox" />
+                              <RadioButton layoutY="68.0" mnemonicParsing="false" text="RadioButton" />
+                              <Label layoutY="110.0" text="Label" />
+                              <TextField layoutX="50.0" layoutY="116.0" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding></AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane fx:id="evidStates_chooser_display" animated="false" disable="true" onMouseClicked="#addEvidStatesOptions" text="Estados das Evidências:">
+                  <content>
+                    <AnchorPane fx:id="evidStates_chooser_areaPane">
+                           <children>
+                              <VBox fx:id="evidStates_chooser_area" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding></AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+            <ScrollPane fx:id="scroll_pane_bayes_result_area" prefHeight="362.0" prefWidth="615.0" styleClass="bg-result-scrollPane" stylesheets="@styles.css" HBox.hgrow="ALWAYS">
+               <content>
+                  <Text fx:id="bayes_result_output_text" fill="RED" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-output" text="aststststsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss" wrappingWidth="614.605094909668">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Text>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </children>
+</fx:root>

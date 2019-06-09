@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<fx:root fx:id="root_fuzzyBayes_result" prefHeight="362.0" prefWidth="820.0" styleClass="bg-area" stylesheets="@styles.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="hbox_main_fuzzyBayes_result" prefHeight="362.0" prefWidth="820.0">
+         <children>
+            <Accordion fx:id="accordion_fuzzyBayes_result" prefHeight="223.0" prefWidth="206.0">
+              <panes>
+                <TitledPane fx:id="evids_fuzzyBayes_chooser_display" animated="false" onMouseClicked="#blockComputeResults" text="Evidências da Hipótese:">
+                  <content>
+                    <AnchorPane fx:id="evids_fuzzyBayes_chooser_areaPane">
+                           <children>
+                              <VBox fx:id="evids_fuzzyBayes_chooser_area" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding></AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane fx:id="measures_chooser_display" animated="false" disable="true" onMouseClicked="#addFuzzyMeasuresOptions" text="Medições das Evidências:">
+                  <content>
+                    <AnchorPane fx:id="measures_chooser_areaPane">
+                           <children>
+                              <VBox fx:id="measures_area" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding></AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+            <ScrollPane fx:id="scroll_pane_fuzzyBayes_result_area" prefHeight="362.0" prefWidth="615.0" styleClass="bg-result-scrollPane" stylesheets="@styles.css" HBox.hgrow="ALWAYS">
+               <content>
+                  <Text fx:id="fuzzyBayes_result_output_text" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-output" wrappingWidth="614.605094909668" />
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </children>
+</fx:root>

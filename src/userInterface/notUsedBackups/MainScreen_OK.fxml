@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root fx:id="root_pane" prefHeight="600.0" prefWidth="1060.0" styleClass="bg-area" stylesheets="@styles.css" type="javafx.scene.layout.BorderPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox fx:id="root_vBox" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar fx:id="menu_bar" styleClass="bg-menu-bar" stylesheets="@styles.css">
+               <menus>
+                  <Menu fx:id="menuFile" text="File">
+                     <items>
+                        <MenuItem fx:id="MenuFile_Save" text="Save" />
+                        <MenuItem fx:id="MenuFile_Close" onAction="#exit" text="Close" />
+                     </items>
+                  </Menu>
+                  <Menu fx:id="MenuEdit" text="Edit">
+                     <items>
+                        <MenuItem fx:id="MenuEdit_Delete" text="Delete" />
+                     </items>
+                  </Menu>
+                  <Menu fx:id="MenuHelp" text="Help">
+                     <items>
+                        <MenuItem fx:id="MenuHelp_About" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <ToolBar fx:id="tool_bar" prefHeight="14.0" styleClass="toolbar" stylesheets="@styles.css">
+               <items>
+                  <HBox fx:id="hbox_toolbar" alignment="CENTER" pickOnBounds="false" prefHeight="18.0" spacing="5.0">
+                     <padding>
+                        <Insets top="-1.0" />
+                     </padding>
+                     <children>
+                        <Button fx:id="btnBayes" onAction="#chooseFileBayes" styleClass="btn-toolbar" stylesheets="@styles.css" text="Carregar arquivo Bayes" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="-5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnFuzzy" onAction="#chooseFileFuzzy" styleClass="btn-toolbar" stylesheets="@styles.css" text="Carregar arquivo Fuzzy" textFill="#b71414" />
+                        <Button fx:id="btnCreateHypNode" onAction="#createHypNodeUI" styleClass="btn-toolbar" stylesheets="@styles.css" text="Criar Nodo Hipótese" textFill="WHITE" />
+                        <Button fx:id="btnCreateEvidNode" disable="true" onAction="#createEvidNodeUI" styleClass="btn-toolbar" stylesheets="@styles.css" text="Criar Nodo Evidência" textFill="WHITE" />
+                        <Button fx:id="btnCompileNetwork" disable="true" onAction="#compileBayesianNet" styleClass="btn-toolbar" stylesheets="@styles.css" text="Compilar Rede" textFill="#e52323" />
+                        <Button fx:id="btnLoadNetwork" disable="true" styleClass="btn-toolbar" stylesheets="@styles.css" text="Carregar arquivo de Rede" textFill="#e52323" />
+                     </children>
+                  </HBox>
+               </items>
+            </ToolBar>
+            <AnchorPane fx:id="separator_bar" opacity="0.0" prefHeight="9.0" prefWidth="1060.0" stylesheets="@styles.css" visible="false" />
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <TabPane fx:id="tabPane_areas" prefHeight="200.0" prefWidth="200.0" side="BOTTOM" stylesheets="@styles.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="tab_bayes" text="Rede Bayesiana">
+            <content>
+              <AnchorPane fx:id="area_bayes" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="bg-area" stylesheets="@styles.css">
+                     <children>
+                        <Button fx:id="btnAllowEditBayes" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="7.0" layoutY="475.0" onAction="#enableBayesianNetworkEdition" styleClass="btn-allow-edit-bayes" stylesheets="@styles.css" text="Habilitar Edição" textFill="#e52323" visible="false" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="8.0">
+                           <tooltip>
+                              <Tooltip fx:id="tooltip_AllowEditBayes" text="Habilitar edição da rede bayesiana.&#10;(Será necessário compilar novamente a rede após as edições)" />
+                           </tooltip>
+                        </Button>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tab_fuzzy" disable="true" text="Pertinências Fuzzy">
+            <content>
+              <AnchorPane fx:id="area_fuzzy" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab fx:id="tab_results" disable="true" text="Resultados">
+              <content>
+                <AnchorPane fx:id="area_results" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab fx:id="tab_empty" disable="true" />
+            <Tab fx:id="tab_notify" disable="true" />
+        </tabs>
+      </TabPane>
+   </center>
+</fx:root>
